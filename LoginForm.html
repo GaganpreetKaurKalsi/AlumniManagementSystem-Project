@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!----------------- Bootstrap css files --------------->
+    <link rel="stylesheet" href="css-files/bootstrap.min.css">
+
+
+    <!----------------- Javascript SDK --------------------->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+    <script src="javascript-files/amazon-cognito-auth.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script> 
+    <script src="javascript-files/amazon-cognito-identity.min.js"></script>  
+    <script src="javascript-files/config.js"></script>
+
+
+    <link rel="stylesheet" href="LoginForm.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <img src="photos/CU.png">
+        <div class="container col-lg-4 col-md-5 col-sm-5 col-xs-10">
+          
+          <div class="signup">Sign Up</div>
+          <div class="login">Log In</div>
+          
+           <div class="signup-form">
+              <label for="type">Sign Up as</label>
+              <select name="type" class="input" onchange="select()" id="user">
+                  <option>Click Here</option>
+                  <option>Alumni</option>
+                  <option>College</option>
+                  <option>Student</option>
+              </select><br>
+              <input type="text" placeholder="Enter Name" class="input" id="personalname"><br>
+              <input type="text" placeholder="Enter Email Address" class="input" id="email"><br>
+              <input type="password" placeholder="Choose a Password" class="input" id="password"><br>
+              <input type="password" placeholder="Re-enter Password" class="input" id="confirm"><br>
+              <div class="btn" onclick="registerButton()">Create account</div>
+           </div>
+          
+          <div class="login-form">
+            <label for="type">Login as</label>
+            <select name="type" class="input">
+                <option>Alumni</option>
+                <option>College</option>
+                <option>Student</option>
+            </select><br>
+              <input type="text" placeholder="Email or Username" class="input" id="inputUsername"><br>
+              <input type="password" placeholder="Password" class="input" id="inputPassword"><br>
+              <div class="btn" onclick="signInButton()">log in</div>
+              <span><a href="#">I forgot my username or password.</a></span>
+           </div>
+        </div>
+      </div>
+      <script>
+        $(".login-form").hide();
+        $(".login").css("background", "none");
+
+        $(".login").click(function(){
+        $(".signup-form").hide();
+        $(".login-form").show();
+        $(".signup").css("background", "none");
+        $(".login").css("background", "#fff");
+        });
+
+        $(".signup").click(function(){
+        $(".signup-form").show();
+        $(".login-form").hide();
+        $(".login").css("background", "none");
+        $(".signup").css("background", "#fff");
+        });
+
+        $(".btn").click(function(){
+        $(".input").val("");
+        });
+    </script>
+
+    <script>
+
+      var username;
+      var password;
+      var personalname;
+      var poolData;
+      var user
+      function select(){
+        user = document.getElementById("user").value
+        console.log(user)
+      }
+      function registerButton() {
+      personalnamename =  document.getElementById("personalname").value;	
+      username = document.getElementById("email").value;
+      
+      if (document.getElementById("password").value != document.getElementById("confirm").value) {
+        alert("Passwords Do Not Match!")
+        throw "Passwords Do Not Match!"
+      } else {
+        password =  document.getElementById("password").value;	
+      }
+      
+      poolData = {
+          UserPoolId : _config.cognito.userPoolId, // Your user pool id here
+          ClientId : _config.cognito.clientId // Your client id here
+        };		
+      var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+      var attributeList = [];
+      
+      var dataEmail = {
+        Name : 'email', 
+        Value : username, //get from form field
+      };
+      
+      var dataPersonalName = {
+        Name : 'name', 
+        Value : personalname, //get from form field
+      };
+
+      var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+      var attributePersonalName = new AmazonCognitoIdentity.CognitoUserAttribute(dataPersonalName);
+      
+      
+      attributeList.push(attributeEmail);
+      attributeList.push(attributePersonalName);
+
+      userPool.signUp(username, password, attributeList, null, function(err, result){
+        if (err) {
+          alert(err.message || JSON.stringify(err));
+          return;
+        }
+        cognitoUser = result.user;
+        console.log('user name is ' + cognitoUser.getUsername());
+        //change elements of page
+        // document.getElementById("titleheader").innerHTML = "Check your email for a verification link";
+        alert("Check your email for verification link")
+        if(user=="Alumni"){
+          window.location.replace("Details.html")
+        }
+        else if(user=="Student"){
+          window.location.replace("StudentProfile.html")
+        }
+      });
+      }
+
+    </script>
+
+    <script>
+
+      function signInButton() {
+        
+      var authenticationData = {
+            Username : document.getElementById("inputUsername").value,
+            Password : document.getElementById("inputPassword").value,
+        };
+      
+        var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+        
+      var poolData = {
+            UserPoolId : _config.cognito.userPoolId, // Your user pool id here
+            ClientId : _config.cognito.clientId, // Your client id here
+        };
+      
+        var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+      
+        var userData = {
+            Username : document.getElementById("inputUsername").value,
+            Pool : userPool,
+        };
+      
+        var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+        
+      cognitoUser.authenticateUser(authenticationDetails, {
+            onSuccess: function (result) {
+              var accessToken = result.getAccessToken().getJwtToken();
+              console.log(accessToken);	
+              alert("Login Successful")
+              window.location.replace("ResponsiveLayout.html")
+            },
+
+            onFailure: function(err) {
+                alert(err.message || JSON.stringify(err));
+            },
+        });
+      }
+    </script>
+
+    <script src="javascript-files/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="javascript-files/bootstrap.js"></script>
+</body>
+</html>

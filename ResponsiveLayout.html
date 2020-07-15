@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Management System</title>
+
+    <!-------------------------- Google Fonts ------------------------>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:wght@500&family=Lora&family=Oswald:wght@300;400;500&family=Oxygen:wght@300;400;700&family=Playfair+Display&family=Quicksand:wght@600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Chelsea+Market&family=Lobster&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    
+
+    <!-- Custom css file -->
+    <link href="ResponsiveStyle.css" rel="stylesheet">
+
+
+
+    <!----------------- Bootstrap css files --------------->
+    <link rel="stylesheet" href="css-files/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
+
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5ebae6c58ee2956d73a07bf4/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    
+
+    <!------------------- Font Awesome javascript -------------------->
+    <script src="https://kit.fontawesome.com/d733855d1a.js" crossorigin="anonymous"></script>
+
+    <!-- Custom Style Tag -->
+    <style>
+        .navbar-drop a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown-div {
+        float: left;
+        /* overflow: hidden; */
+        }
+
+        .dropdown-div .dropbtn {
+        font-size: 16px;  
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        }
+
+        .navbar-drop a:hover, .dropdown-div:hover .dropbtn {
+        background-color: red;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+
+        .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        }
+
+        .dropdown-content a:hover {
+        background-color: #ddd;
+        }
+
+        .dropdown-div:hover .dropdown-content {
+        display: block;
+        } 
+        .dropdown-content{
+            left: -90px;
+            top: 63px;
+        } 
+    </style>
+
+    <!------------------------------------------ OWL CARROUSEL PLUGIN ----------------------------------------->
+    <link rel="stylesheet" href="css-files/owl.carousel.css">    
+    <link rel="stylesheet" href="css-files/owl.theme.default.min.css"> 
+    <style type="text/css"> 
+        *{
+            margin:0;
+            padding:0;
+        }
+        .carousell .owl-carousel .img-fluid{
+            max-width:100%;
+            height:100%;
+            display:block;
+        }
+    </style>
+    <!------------------------- Owl Carousel END ------------------------>
+
+
+    <script>
+        function submitToAPI(e) {
+               e.preventDefault();
+        //       var URL = "API Gateway";
+        
+        
+               var firstname = document.getElementById("fname-input").value;
+               var lastname = document.getElementById("lname-input").value;
+               var emailaddress = document.getElementById("email-input").value;
+               var message = document.getElementById("description-input").value;
+               if (firstname=="" || lastname=="" || emailaddress=="" || message=="")
+                {
+                    alert("Please Fill All Required Field");
+                    return false;
+                }
+                
+                nameRE = /^[A-Z]{1}[a-z]{2,20}[ ]{1}[A-Z]{1}[a-z]{2,20}/;
+                if(!nameRE.test(firstname)) {
+                    alert("First Name entered, is not valid");
+                        return false;
+                }
+                // lnameRE = /^[A-Z]{1}[a-z]{2,20}[ ]{1}[A-Z]{1}[a-z]{2,20}/;
+                // if(!lnameRE.test(lastname)) {
+                //     alert("Last Name entered, is not valid");
+                //         return false;
+                // }
+                
+                // phoneRE = /^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$/;
+                // if(!phoneRE.test(phone)) {
+                //         alert("Phone number entered, is not valid");
+                //         return false;
+                //     }
+                
+                emailRE = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(!emailRE.test(emailaddress)) {
+                    alert("Email Address entered, is not valid");
+                        return false;
+                }
+               var data = {
+                  fname : firstname,
+                  lname: lastname,
+                  email : emailaddress,
+                  desc : message
+                };
+                
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "https://4jjfg6n5qe.execute-api.us-east-1.amazonaws.com/prod/email");
+                xmlhttp.setRequestHeader("Content-Type", "application/json");
+                xmlhttp.send(JSON.stringify(data));
+                xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState === 4) {
+                    var response = JSON.parse(xmlhttp.responseText);
+                    if (xmlhttp.status === 200 ) {
+                        console.log('successful');
+                        document.getElementById("contact-form").innerHTML = "<h1>Thank you for your message/feedback<br>our team will get back to you soon!</h1>";
+                    } else {
+                        console.log('failed');
+                    }
+                }
+            }
+            
+            document.getElementById('contact-form').reset();
+              
+            } 
+        </script>
+</head>
+<body>
+    <header>
+        <nav id="header-nav" class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="ResponsiveLayout.html" class="logo pull-left">
+                        <div id="logo-img" alt="Logo image"></div>
+                    </a>
+                    <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="collapsable-nav" class="collapse navbar-collapse">
+                    <ul id="nav-list" class="nav navbar-nav navbar-right text-center">
+                        <li class="visible-xs">
+                            <a href="#Home">Home</a>
+                        </li>
+                        <li>
+                            <a href="#News">News</a>
+                        </li>
+                        <li>
+                            <a href="#Management">Management</a>
+                        </li>
+                        <li>
+                            <a href="#Project">Project</a>
+                        </li>
+                        <li>
+                            <a href="#Alumni">Alumni</a>
+                        </li>
+                        <li>
+                            <a href="#Contact">Contact</a>
+                        </li>
+                        <li class="visible-lg visible-md visible-sm">
+                            <div class="navbar-drop">
+                                <div class="dropdown-div" style="height: 61px;">
+                                  <button class="dropbtn">
+                                    <i class="fa fa-caret-down"></i>
+                                  </button>
+                                  <div class="dropdown-content">
+                                    <a href="Dashboard.html" style="background-color: black;font-size: 13px;">DASHBOARD</a>
+                                    <a href="LoginForm.html" style="background-color: red;font-size: 13px;">LOG OUT</a>
+                                  </div>
+                                </div> 
+                            </div>
+                        </li>
+                        <li class="visible-xs">
+                            <a href="Dashboard.html">Dashboard</a>
+                        </li>
+                        <li class="visible-xs" style="background-color:red">
+                            <a href="LoginForm.html">Logout</a>
+                        </li>
+                    </ul><!-- #nav-list -->
+                </div><!-- .collapse .navbar-collapse -->
+            </div>
+        </nav> 
+    </header>
+    <div class="slide-container visible-sm visible-md visible-lg">
+        <span id="slider-image1"></span>
+        <span id="slider-image2"></span>
+        <span id="slider-image3"></span>
+        <span id="slider-image4"></span>
+        <div class="image-container">
+            <img src="photos/Slide1.jpg" alt="" class="slider-image">
+            <img src="photos/Slide2.jpg" alt="" class="slider-image">
+            <img src="photos/Slide3.jpg" alt="" class="slider-image">
+            <img src="photos/Slide4.jpg" alt="" class="slider-image">
+        </div>
+        <figcaption class="cap"><p>Alumni <span>Management System</span><p></figcaption>
+        <div class="button-container">
+            <a href="#slider-image1" class="slider-button"></a>
+            <a href="#slider-image2" class="slider-button"></a>
+            <a href="#slider-image3" class="slider-button"></a>
+            <a href="#slider-image4" class="slider-button"></a>
+        </div>
+    </div>
+    <div class="slide-container visible-xs">
+        <span id="Slider-Image1"></span>
+        <span id="Slider-Image2"></span>
+        <span id="Slider-Image3"></span>
+        <span id="Slider-Image4"></span>
+        <div class="image-container">
+            <img src="photos/Portrait1.jpeg" alt="" class="slider-image">
+            <img src="photos/cuimage2.jpg" alt="" class="slider-image">
+            <img src="photos/cuimg3.jpg" alt="" class="slider-image">
+            <img src="photos/cuimage5.jpg" alt="" class="slider-image">
+        </div>
+        <figcaption class="cap"><p>Alumni <span>Management System</span><p></figcaption>
+        <div class="button-container">
+            <a href="#Slider-Image1" class="slider-button"></a>
+            <a href="#Slider-Image2" class="slider-button"></a>
+            <a href="#Slider-Image3" class="slider-button"></a>
+            <a href="#Slider-Image4" class="slider-button"></a>
+        </div>
+    </div>
+    <div class="empty-div"><div class="marquee"><p> DISCOVER . LEARN . EMPOWER</p></div></div>
+    <div class="single-line container-fluid" id="News" style="padding:0;">
+        <div class="row col-lg-12" style="padding:0;margin:0;">
+            <div class="box col-lg-6 col-md-6 col-sm-5 col-xs-12" style="padding:0;">
+                <span class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><section><h1>691 <sup>+</sup></h1><br><h2>COMPANIES</h2><br><p>For Campus placements in CU</p></section></span>
+                <span class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><section><h1>6617 <sup>+</sup></h1><br><h2>PLACEMENTS</h2><br><p>Offered in Chandigarh University</p></section></span>
+                <span class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><section><h1>35 <sup>LPA</sup></h1><br><h2>ENGINEERING</h2><br><p>Highest Package Offered</p></section></span>
+                <span class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><section><h1>14 <sup>LPA</sup></h1><br><h2>MANAGEMENT</h2><br><p>For CU Campus placements</p></section></span>
+            </div>
+            <div class="Announcement-div col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                <h1>CAMPUS LIVE <sup><i class="fas fa-circle" style="font-size:20px; color:red"></i></sup></h1>
+                <h1>GLIMPSE OF <span style="color:rgb(0, 140, 255)">RECENT HAPPENINGS</span></h1>
+                <div class="one">
+                    <h3><i class="fas fa-calendar-week"></i> APRIL 30, 2020</h3>
+                    <h1>Student COVID Warriors from Chandigarh University</h1>
+                    <p>In the time of crises, students of Chandigarh University are helping by doing Thermal checking at entry point of Sector-40, Chandigarh</p>
+                </div>
+                <hr>
+                <div class="one">
+                    <h3><i class="fas fa-calendar-week"></i> April 20, 2020</h3>
+                    <h1>COVID-19 Warriors Scholarship</h1>
+                    <p>Chandigarh University announces Rs.5 Crore Scholarship for COVID-19 Warriors</p>
+                </div>
+                <hr>
+                <div class="one">
+                    <h3><i class="fas fa-calendar-week"></i> APRIL 16, 2020</h3>
+                    <h1>Amid crises situation due to COVID-19</h1>
+                    <p>Chandigarh University Gharuan has stood-up to offer community services such as distribution of free sanitizers, face masks, stand-by medical facilities to its staff members, residents of 6 adopted villages.</p>
+                </div>
+                <hr>
+                <div class="one">
+                    <h3><i class="fas fa-calendar-week"></i> APRIL 16, 2020</h3>
+                    <h1>Chandigarh University "CU-AID" campaign kicks off in Tricity; Staff and Management donates one day salary for COVID-19 crises</h1>
+                    <p>Chandigarh University comes up with Special Serving Trolley to maintain social distancing</p>
+                </div>
+                <hr>
+                <div class="one">
+                    <h3><i class="fas fa-calendar-week"></i> APRIL 16, 2020</h3>
+                    <h1>Chandigarh University announces Dhyan Chand Sports Scholarship for players</h1>
+                    <p>Punjab Government honors sports achievers of Chandigarh University.<br>Chandigarh University announces Dhyan Chand Sports Scholarship worth 2 crores for players.</p>
+                </div>
+                <hr>
+                <div class="one">
+                    <h3><i class="fas fa-calendar-week"></i> APRIL 08, 2020</h3>
+                    <h1>COVID-19 Isolation Facility at CU</h1>
+                    <p>Punjab's Largest COVID-19 Isolation Facility established at Gharuan by CU and District Administration Mohali.</p>
+                </div>
+                <hr>
+                <div class="one">
+                    <h3><i class="fas fa-calendar-week"></i> MARCH 30, 2020</h3>
+                    <h1>Chandigarh University distributes food to neighbouring villages</h1>
+                    <p>The distribution drive started from the first day of the lockdown and will be continued throughout the 21 days period.</p>
+                </div>
+                <hr>
+                <div class="one">
+                    <h3><i class="fas fa-calendar-week"></i> January 16, 2020</h3>
+                    <h1>Chandigarh University students invent ‘Queen Belt’ with GPS, distress calling for women’s safety</h1>
+                    <p>The belt is equipped with an electronic circuit, which has a Global Positioning System (GPS) and a mobile SIM card. It can be wear after applying a conductive tape inside the cloth and can only be opened with a four-digit pin.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="Management">
+        <img src="photos/university-pic.jpg" alt="University-pic">
+        <h1 class="a d-flex justify-content-center">Student Friendly <span style="color:#333">University</span></h1>
+        <iframe width="300px" height="200px" src="https://www.youtube.com/embed/MpXd5KElCtw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="about">
+            <h1 class="a" style="width:90%;">Know About Us <i class="fas fa-university" style="color:rgb(0, 0, 0)"></i></h1>
+            <div class="Faculty container-fluid">
+                <div class="row managing col-lg-12" style="margin:0;">
+                    <div class="part col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="chancellor common col-lg-11 col-md-11 col-sm-9 col-xs-12">
+                            <div><img src="photos/Chancellor.jpg"></div>
+                            <h2>Satnam Singh Sandhu<br><span style="color:black;">Chancellor</span></h2>
+                        </div>
+                    </div>
+                    <div class="part col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="VC common col-lg-11 col-md-11 col-sm-9 col-xs-12">
+                            <div><img src="photos/VC.jpg"></div>
+                            <h2>R.S. Bawa<br><span style="color:black;">Vice Chancellor</span></h2>
+                        </div>
+                    </div>
+                    <div class="part col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="College common col-lg-11 col-md-11 col-sm-9 col-xs-12">
+                            <div><img src="photos/CU.png"></div>
+                            <h2>Logo<br><span style="color:black;">Youngest NAAC A+ Graded University</span></h2>
+                        </div>
+                    </div>
+                    <div class="part col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="other common col-lg-11 col-md-11 col-sm-9 col-xs-12">
+                            <h2>INFO</h2>
+                            <div><p><span style="color:black;font-weight:500">Moto:<br></span><p>DISCOVER.LEARN.EMPOWER</p></p><br></div>
+                            <div><p><span style="color:black;font-weight:500">Type:<br></span>PRIVATE</p><br></div>
+                            <div><p><span style="color:black;font-weight:500">Established:<br></span>2012</p><br></div>
+                            <div><p><span style="color:black;font-weight:500">Location:<br></span>Gharuan,Mohali,Punjab</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="animate">
+        <div class="image" id="Project">
+            <div class="container">
+                <h1>About the Project <br class="visible-xs">( <span>Overview</span> )</h1>
+                <p>The project is an <span>Alumni Management system</span> wherein the passed out Alumni's can view their graduation progress information like batch, projects undertaken, their details, etc.
+                    It is a complete database where by logging in you can access your full details of graduation. The project contains different logins : College, Student, Alumni.
+                    Here the alumni can edit there information like name of company currently working in. Also they can get latest updates regarding the Alumni Meet or the events going on in the college.
+                    They can also have chat with the admin for if any queries. They can access some information of the fellow alumnis. They can also send messages to their batchmates which will land in their mail.
+                </p>
+                <hr class="animate" style="top:20px">
+            </div>
+            <div class="self">
+                <img src="photos/Gaganpreet.jpg" alt="">
+                <h1>Gaganpreet Kaur Kalsi</h1><br><p>1<sup>st</sup>  B-tech CSE Chandigarh University, Aspiring Developer in Artificial Intelligence and Machine Learning.</p>
+                <span><i class="fa fa-facebook"></i><i class="fa fa-instagram"></i><i class="fa fa-linkedin"></i></span>
+            </div>
+        </div>
+        <div class="alumni" id="Alumni">
+            <h1><span>| </span> NOTABLE ALUMNI <span> |</span></h1>
+            <hr>
+            <div class="alumni-images container-fluid">
+                <div class="row col-xs-12" style="margin:0;padding:0;">
+                    <div class="alumni-1 col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img1.jpg" alt="">
+                        <h2><span>Bhagwan Singh</span> - Asian Games 2018 Medal Winner and National Gold Medalist in Rowing</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                    <div class="alumni-2 col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img2.jpg" alt="">
+                        <h2><span>Tanya Mittal</span> - Miss Tourism Universe & TedxYouth Speaker</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                    <div class="alumni-3 col-lg-7  col-md-7 col-sm-7 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img3.jpg" alt="">
+                        <h2><span>Lt. Jagjot Singh</span> - Commissioned in 9 Horse, aka Deccan Horse, Indian Army</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                    <div class="alumni-11 col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img11.jpg" alt="">
+                        <h2><span>Ankit Bhatt</span> - Journalist, News 18 Bureau Head in Jammu & Kashmir, Young Journalist Awardee</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                    <div class="alumni-5 col-lg-7  col-md-7 col-sm-7 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img5.jpg" alt="">
+                        <h2><span>Shashi Chopra</span> - International Medalist in Boxing</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                    <div class="alumni-4 col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img4.jpg" alt="">
+                        <h2><span>Sumit Malik</span> - Member of India’s American Football World Championship Squad</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                    <div class="alumni-7 col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img7.jpg" alt="">
+                        <h2><span>Sub Lt. Ashish</span> - Officer, Indian Navy</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                    <div class="alumni-9 col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img9.jpg" alt="">
+                        <h2><span>Deepak Kumar</span> - Manager, Ciena Corporation, US based Company</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                    <div class="alumni-12 col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img12.jpg" alt="">
+                        <h2><span>Tirlok Singh</span> - CU Student & Entrepreneur</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                    <div class="alumni-6 col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img6.jpg" alt="">
+                        <h2><span>Nav Inder</span> - Punjabi Singer</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                    <div class="alumni-8 col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img8.jpg" alt="">
+                        <h2><span>Parry G</span> - Bollywood Rapper, First rapper ever to feature in India’s Got Talent’s Grand Finale</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                    <div class="alumni-10 col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                        <div class="pic col-xs-11 col-lg-10">
+                        <img src="photos/alumni-img10.jpg" alt="">
+                        <h2><span>Nikhil Sharma</span> - Entrepreneur, CEO WcarPS</h2>
+                        <hr style="width:50%;margin-left:25%;margin-right:25%;margin-top:10%;border:1px solid black;">
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </div>
+        <div class="carousel-contact" >
+            <div class="combine" style="position:relative;">
+                <div id="particles-js" style="background-color:black;z-index:-1;"></div>
+                <h2 class="recruiters">Our Leading Recruiters</h2>
+                <div class="Button-recruiters"><a href="Recruiters.html" style="text-decoration: none;"><input type="button" value="VIEW ALL" class="btn"></input></a></div>
+            </div>
+            <div class="carousell" style="padding-left:10%;padding-right:10%;">
+                <hr style="position: relative;left:-12%;width:123.5%;margin-bottom:1%">
+                <div class="owl-carousel owl-theme">
+                    <div class="item"><img src="photos/google.jpg" class="img-fluid" alt="12"></div>
+                    <div class="item"><img src="photos/amazon.png" class="img-fluid" alt="12"></div>
+                    <div class="item"><img src="photos/Microsoft.png" class="img-fluid" alt="12"></div>
+                    <div class="item"><img src="photos/IBM.png" class="img-fluid" alt="12"></div>
+                    <div class="item"><img src="photos/sap.jpg" class="img-fluid" alt="12"></div>
+                    <div class="item"><img src="photos/TechMahindra.jpg" class="img-fluid" alt="12"></div>
+                </div>
+                <hr style="position: relative;left:-12%;width:123.5%;margin-top:1%">
+            </div>
+            <div class="contact" id="Contact">
+                <h1>Contact US</h1>
+                <p style="color:rgb(78, 73, 73)">Drop a message and we will get in touch with you soon</p><hr>
+                <div class="info">
+                    <h1 class="visible-lg visible-md visible-sm">CONTACT</h1>
+                    <div class="x1 xs"><i class="fas fa-phone-square"></i>
+                    <p class="clear"><span style="color:black;font-weight:500">Phone</span><br>0172-4000000</p></div>
+                    <div class="x2 xs"><i class="far fa-paper-plane"></i>
+                    <p class="clear"><span style="color:black;font-weight:500">Email</span><br>abc@cumail.com</p></div>
+                    <div class="x3 xs"><i class="fas fa-home"></i>
+                    <p class="clear"><span style="color:black;font-weight:500">Address</span><br>NH-95, Ludhiana-Chandigarh State Hwy, Punjab 140413</p></div>
+                </div>
+                <form class="message" id="contact-form" method="post">
+                    <h1>DROP YOUR MESSAGE HERE  <i class="fas fa-level-down-alt" style="color:red;"></i></h1>
+                    <label for="fname"  >First Name :</label>
+                    <input type="text" id="fname-input" class="form-control" placeholder="For ex. Shravan " name="fname" required>
+                    <label for="lname">Last Name : </label>
+                    <input type="text"id="lname-input" class="form-control" placeholder="For ex. Malhotra" name="lname" required>
+                    <label for="email">Email Address : </label>
+                    <input type="email" id="email-input" class="form-control" placeholder="For ex. something@gmail.com" name="email" required>
+                    <label for="message">Message : </label>
+                    <textarea type="text" id="description-input" class="form-control" placeholder="Drop your message or queries here..." name="message" required></textarea>
+                    <button type="submit" onClick="submitToAPI(event)">Submit</button>
+                </form>
+            </div>
+            <div class="footer" style="width:100%;height:60px;background-color:rgba(0, 0, 0, 0.856);position:relative;top:150px;color:rgba(255, 255, 255, 0.959)">
+                <div class="copy">Copyright &copy; 2020</div>
+                <div class="icons">
+                    <a href="" ><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-facebook-square"></i></a>
+                    <a href=""><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="terms"><a href="">Terms</a> | <a href="">Privacy Policy</a></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="javascript-files/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="javascript-files/bootstrap.js"></script>
+    <script src="javascript-files/owl.carousel.js"></script>
+
+    <!------------------- Script for Owl-carousel -------------------->
+    <script type="text/javascript">
+            $('.owl-carousel').owlCarousel({
+                loop:true,
+                margin:10,
+                nav:true,
+                responsive:{
+                    0:{
+                        items:5
+                    },
+                    600:{
+                        items:6
+                    },
+                    768:{
+                        items:5
+                    },
+                    992:{
+                        items:6
+                    }
+                }
+            })
+    </script>
+
+    <!------------------- Script for Contact form :- pop ups for alert and confirm ------------------->
+    <script>
+        function popup(){
+            let field = document.querySelectorAll("form.message input, form.message textarea");
+            let i,j=0;
+            for(i=0;i<4;i++){
+                if(field[i].value.length == 0){
+                    j=1;
+                    break;
+                }
+            }
+            if(j==0){
+                let value = confirm("Do you want to submit ?");
+                console.log(value);
+                if(value==true){
+                    alert("Submission Successful");
+                }
+                else{
+                    alert("Submission Unsuccessful");
+                }
+            }  
+        }
+    </script>
+    <!--------------------------  END  -------------------------->
+    
+
+    <!--------- Scripts for PARTICLE ANIMATION ----------->
+    <script src="javascript-files/particles.js"></script>
+    <script src="javascript-files/apps.js"></script>
+    <script src="javascript-files/package.json"></script>
+    <script src="javascript-files/js.js"></script>
+    <!-- End of scripts for particle animation -->
+
+    <!------------- Scripts for Nav bar collapse when focus id not there ---------->
+    <script src="javascript-files/jquery-2.1.4.min.js"></script>
+    <script src="javascript-files/bootstrap.min.js"></script>
+    <script src="javascript-files/script.js"></script>
+</body>
+</html>
