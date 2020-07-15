@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!--------------- Custom CSS Files --------------->
+    
+    <!-- <link href="C:\Users\DELL\Desktop\responsive-animated-dashboard-code-gh-pages\css\main.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="Dashboard.css">
+    
+
+    <!---------------Start of Tawk.to Script------------------>
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5ebae6c58ee2956d73a07bf4/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!-- amCharts javascript sources -->
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+        <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+        <script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
+
+    <!------------------- Font Awesome javascript -------------------->
+    <script src="https://kit.fontawesome.com/d733855d1a.js" crossorigin="anonymous"></script>
+    
+
+  <link href="http://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic" rel="stylesheet">
+</head>
+<body>
+    <header class="Heading">
+        <h1>DASHBOARD <i class="fas fa-chart-line"></i> <span> <a href="ResponsiveLayout.html">Return to Home Page</a></span></h1>
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="white" fill-opacity="1" d="M0,288L60,261.3C120,235,240,181,360,181.3C480,181,600,235,720,261.3C840,288,960,288,1080,277.3C1200,267,1320,245,1380,234.7L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg> -->
+    </header>
+    
+    <main role="main">
+
+    <article class="panel farthest" style="margin: 2%;width: 96%;">
+      <h2 class="panel-head section-label" tabindex="0"><span class="section-label-back">HIGHEST PACKAGE 2019-20</span></h2>
+      <div class="farthest-wrap">
+        <div class="align-xs">
+        <p class="farthest-km">Rs. <span class="counter">35</span> LPA</p>
+        <p class="farthest-probe">Engineering</p></div>
+        <div class="align-xs">
+        <p class="farthest-km">Rs. <span class="counter">14</span> LPA</p>
+        <p class="farthest-probe">MBA</p></div>
+        <div class="align-xs">
+        <p class="farthest-km">Rs. <span class="counter">12</span> LPA</p>
+        <p class="farthest-probe">Hotel Management</p></div>
+      </div>
+    </article>
+    <div>
+    <article class="panel distances adjust-height graph1">
+      <h2 class="panel-head section-label" tabindex="0"><span class="section-label-back">COMPANIES VISITED 2009-2018</span></h2>
+      <div>
+        <title>COMPANIES VISITED 2009-2018</title>
+        <div id="chartdiv"></div>
+      </div>
+    </article>
+    <article class="panel distances adjust-height table1">
+        <h2 class="panel-head section-label" tabindex="0"><span class="section-label-back">YEARLY PLACEMENT RECORDS :</span></h2>
+        <div id="company-table">
+            <div><div style="background-color: lightskyblue;">BATCH</div><div style="background-color: lightskyblue;">COMPANIES VISITED</div></div>
+            <div><div>2009</div><div>58</div></div>
+            <div><div>2010</div><div>104</div></div>
+            <div><div>2011</div><div>127</div></div>
+            <div><div>2012</div><div>163</div></div>
+            <div><div>2013</div><div>214</div></div>
+            <div><div>2014</div><div>282</div></div>
+            <div><div>2015</div><div>425</div></div>
+            <div><div>2016</div><div>425</div></div>
+            <div><div>2017</div><div>492</div></div>
+            <div><div>2018</div><div>627</div></div>
+        </div>
+      </article>
+      </div>
+      <article class="panel distances adjust-height graph2">
+        <h2 class="panel-head section-label" tabindex="0"><span class="section-label-back">STUDENT PLACED 2009-2019</span></h2>
+        <div>
+          <title>STUDENT PLACED 2009-2019</title>
+          <div id="chart"></div>
+        </div>
+      </article>
+      <article class="panel distances adjust-height table2">
+          <h2 class="panel-head section-label" tabindex="0"><span class="section-label-back">YEARLY PLACEMENT RECORDS :</span></h2>
+          <div id="company-table">
+              <div><div style="background-color: rgb(139, 186, 0);">BATCH</div><div style="background-color: rgb(139, 186, 0);">STUDENT PLACED</div></div>
+              <div><div>2009</div><div>233</div></div>
+              <div><div>2010</div><div>937</div></div>
+              <div><div>2011</div><div>1404</div></div>
+              <div><div>2012</div><div>1984</div></div>
+              <div><div>2013</div><div>1752</div></div>
+              <div><div>2014</div><div>2410</div></div>
+              <div><div>2015</div><div>4690</div></div>
+              <div><div>2016</div><div>4690</div></div>
+              <div><div>2017</div><div>5134</div></div>
+              <div><div>2018</div><div>6314</div></div>
+              <div><div>2019</div><div>6617</div></div>
+          </div>
+        </article>
+
+        <article class="panel distances adjust-height graph3">
+            <h2 class="panel-head section-label" tabindex="0"><span class="section-label-back">HIGHEST PACKAGE OFFERED 2009-2019</span></h2>
+            <div>
+              <title>HIGHEST PACKAGE OFFERED 2009-2019</title>
+              <div id="chartdivision"></div>
+            </div>
+          </article>
+          <article class="panel distances adjust-height table3">
+              <h2 class="panel-head section-label" tabindex="0"><span class="section-label-back">YEARLY PLACEMENT RECORDS :</span></h2>
+              <div id="company-table">
+                  <div><div class="salary" style="background-color: rgb(255, 123, 0);">BATCH</div><div style="background-color: rgb(255, 123, 0);">HIGHEST PACKAGE OFFERED</div></div>
+                  <div><div>2009</div><div>3.25 LPA</div></div>
+                  <div><div>2010</div><div>6.1 LPA</div></div>
+                  <div><div>2011</div><div>6.75 LPA</div></div>
+                  <div><div>2012</div><div>6.4 LPA</div></div>
+                  <div><div>2013</div><div>16.0 LPA</div></div>
+                  <div><div>2014</div><div>24.0 LPA</div></div>
+                  <div><div>2015</div><div>23.65 LPA</div></div>
+                  <div><div>2016</div><div>22.5 LPA</div></div>
+                  <div><div>2017</div><div>31.77 LPA</div></div>
+                  <div><div>2018</div><div>31.77 LPA</div></div>
+                  <div><div>2019</div><div>35 LPA</div></div>
+              </div>
+            </article>
+            <article class="panel distances adjust-height graph4">
+                <h2 class="panel-head section-label" tabindex="0"><span class="section-label-back">MNC'S OFFERING ABOVE 15LACS PACKAGE</span></h2>
+                <div>
+                  <title>HIGHEST PACKAGE OFFERED 2009-2019</title>
+                  <div id="chartdivi"></div>
+                </div>
+            </article>
+            <article class="panel distances adjust-height table4">
+                <h2 class="panel-head section-label" tabindex="0"><span class="section-label-back">YEARLY PLACEMENT RECORDS :</span></h2>
+                <div id="company-table">
+                    <div><div style="background-color: rgb(255, 123, 0);">BATCH</div><div style="background-color: rgb(255, 123, 0);">NO. OF COMPANIES</div></div>
+                    <div><div>2009</div><div>0</div></div>
+                    <div><div>2010</div><div>0</div></div>
+                    <div><div>2011</div><div>0</div></div>
+                    <div><div>2012</div><div>1</div></div>
+                    <div><div>2013</div><div>2</div></div>
+                    <div><div>2014</div><div>2</div></div>
+                    <div><div>2015</div><div>3</div></div>
+                    <div><div>2016</div><div>4</div></div>
+                    <div><div>2017</div><div>15</div></div>
+                    <div><div>2018</div><div>17</div></div>
+                    <div><div>2019</div><div>18</div></div>
+                </div>
+            </article>
+
+    <article class="panel" style="margin-bottom: 20px;">
+      <h2 class="panel-head section-label" tabindex="0" style="margin-bottom:30px;"><span class="section-label-back">TOP COMPANIES</span></h2>
+
+      <div class="tab-group">
+        <ul class="tabs clearfix" role="tablist">
+          <li class="tab" role="presentation"style="background: linear-gradient(180deg, rgba(24,41,79,1) 0%, rgba(36,80,173,1) 50%, rgba(36,122,167,1) 100%);"><a style="color:white;text-decoration: none;" href="#microsoft" role="tab" aria-controls="microsoft" aria-selected="true" style="color:black;">Microsoft</a></li>
+          <li class="tab" role="presentation"style="background: linear-gradient(180deg, rgba(24,41,79,1) 0%, rgba(36,80,173,1) 50%, rgba(36,122,167,1) 100%);"><a style="color:white;text-decoration: none;" href="#amazon" role="tab" aria-controls="amazon" style="color:black;">Amazon</a></li>
+          <li class="tab" role="presentation"style="background: linear-gradient(180deg, rgba(24,41,79,1) 0%, rgba(36,80,173,1) 50%, rgba(36,122,167,1) 100%);"><a style="color:white;text-decoration: none;" href="#google" role="tab" aria-controls="google" style="color:black;">Google</a></li>
+        </ul>
+
+        <div class="tab-panels">
+          <div class="tab-panel" id="microsoft" role="tabpanel" aria-hidden="false">
+            <div><img class="flex-img details-img" src="photos/Microsoft.png" alt="Microsoft icon"></div>
+            <dl class="details">
+              <dt>Company</dt>
+              <dd>Microsoft Corporation</dd>
+              <dt>Founders</dt>
+              <dd>Bill Gates, Paul Allen</dd>
+            </dl>
+          </div>
+          <div class="tab-panel" id="amazon" role="tabpanel" aria-hidden="true">
+            <div><img class="flex-img details-img" src="photos/amazon.png" alt="Amazon icon"></div>
+            <dl class="details">
+              <dt>Company</dt>
+              <dd>Amazon</dd>
+              <dt>Founder</dt>
+              <dd>Jeff Bezos</dd>
+            </dl>
+          </div>
+          <div class="tab-panel" id="google" role="tabpanel" aria-hidden="true">
+            <div><img class="flex-img details-img" src="photos/google.jpg" alt="Google icon"></div>
+            <dl class="details">
+              <dt>Company</dt>
+              <dd>Google</dd>
+              <dt>Founders</dt>
+              <dd>Larry Page, Sergey Brin</dd>
+              <dt>CEO</dt>
+              <dd>Sundar Pichai</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="javascript-files/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" integrity="sha256-JtQPj/3xub8oapVMaIijPNoM0DHoAtgh/gwFYuN5rik=" crossorigin="anonymous"></script>
+  <script>
+      $('.counter').counterUp({
+    delay: 10,
+    time: 1000
+    });
+  </script>
+        <!-- amCharts javascript code -->
+        <script type="text/javascript">
+            AmCharts.makeChart("chartdiv",
+            {
+                    "type": "serial",
+                    "categoryField": "category",
+                    "rotate": true,
+                    "startDuration": 1,
+                    "theme": "default",
+                    "categoryAxis": {
+                        "gridPosition": "start",
+                        "minHorizontalGap": 85
+                    },
+                      "trendLines": [],
+                      "graphs": [
+                          {
+                              "balloonText": "[[value]] companies",
+                              "fillAlphas": 1,
+                              "id": "AmGraph-1",
+                              "labelText": "[[value]]",
+                              "title": "graph 1",
+                              "type": "column",
+                              "valueField": "column-1"
+                          },
+                          {
+                              "balloonText": "[[value]] companies",
+                              "bullet": "round",
+                              "id": "AmGraph-2",
+                              "labelText": "[[value]]",
+                              "lineThickness": 2,
+                              "title": "graph 2",
+                              "valueField": "column-2"
+                          }
+                      ],
+                      "guides": [],
+                      "valueAxes": [
+                          {
+                              "id": "ValueAxis-1",
+                              "title": ""
+                          }
+                      ],
+                      "allLabels": [],
+                      "balloon": {},
+                      "titles": [
+                          {
+                              "id": "Title-1",
+                              "size": 15,
+                              "text": "Companies Visited 2009-2018"
+                          }
+                      ],
+                      "dataProvider": [
+                          {
+                              "column-1": "627",
+                              "category": "2018"
+                          },
+                          {
+                              "column-1": "492",
+                              "category": "2017"
+                          },
+                          {
+                              "column-1": "425",
+                              "category": "2016"
+                          },
+                          {
+                              "column-1": "425",
+                              "category": "2015"
+                          },
+                          {
+                              "column-1": "282",
+                              "category": "2014"
+                          },
+                          {
+                              "column-1": "214",
+                              "category": "2013"
+                          },
+                          {
+                              "column-1": "163",
+                              "category": "2012"
+                          },
+                          {
+                              "column-1": "127",
+                              "category": "2011"
+                          },
+                          {
+                              "column-1": "104",
+                              "category": "2010"
+                          },
+                          {
+                              "column-1": "58",
+                              "category": "2009"
+                          }
+                      ]
+                  }
+              );
+          </script>
+          <!-- amCharts javascript code -->
+		<!-- amCharts javascript code -->
+		<script type="text/javascript">
+			AmCharts.makeChart("chart",
+				{
+					"type": "serial",
+					"categoryField": "category",
+					"startDuration": 1,
+					"theme": "light",
+					"categoryAxis": {
+						"gridPosition": "start"
+					},
+					"trendLines": [],
+					"graphs": [
+						{
+							"balloonText": "[[value]] students",
+							"fillAlphas": 1,
+							"id": "AmGraph-1",
+							"title": "graph 1",
+							"type": "column",
+							"valueField": "column-1"
+						}
+					],
+					"guides": [],
+					"valueAxes": [
+						{
+							"id": "ValueAxis-1",
+							"stackType": "regular",
+							"title": "No. of Students Placed"
+						}
+					],
+					"allLabels": [],
+					"balloon": {},
+					"titles": [
+						{
+							"id": "Title-1",
+							"size": 15,
+							"text": "Student Placed 2009-2019"
+						}
+					],
+					"dataProvider": [
+						{
+							"category": "2009",
+							"column-1": "233"
+						},
+						{
+							"category": "2010",
+							"column-1": "937"
+						},
+						{
+							"category": "2011",
+							"column-1": "1404"
+						},
+						{
+							"category": "2012",
+							"column-1": "1984"
+						},
+						{
+							"category": "2013",
+							"column-1": "1752"
+						},
+						{
+							"category": "2014",
+							"column-1": "2410"
+						},
+						{
+							"category": "2015",
+							"column-1": "4690"
+						},
+						{
+							"category": "2016",
+							"column-1": "4690"
+						},
+						{
+							"category": "2017",
+							"column-1": "5134"
+						},
+						{
+							"category": "2018",
+							"column-1": "6314"
+						},
+						{
+							"category": "2019",
+							"column-1": "6617"
+						}
+					]
+				}
+			);
+        </script>
+        <!-- amCharts javascript code -->
+		<script type="text/javascript">
+			AmCharts.makeChart("chartdivision",
+				{
+					"type": "serial",
+					"categoryField": "category",
+					"rotate": true,
+					"startDuration": 1,
+					"theme": "default",
+					"categoryAxis": {
+						"gridPosition": "start"
+					},
+					"trendLines": [],
+					"graphs": [
+						{
+							"balloonText": "[[value]] LPA",
+							"fillAlphas": 1,
+							"id": "AmGraph-1",
+							"labelText": "[[value]]",
+							"title": "graph 1",
+							"type": "column",
+							"valueField": "column-1"
+						}
+					],
+					"guides": [],
+					"valueAxes": [
+						{
+							"id": "ValueAxis-1",
+							"title": ""
+						}
+					],
+					"allLabels": [],
+					"balloon": {},
+					"titles": [
+						{
+							"id": "Title-1",
+							"size": 15,
+							"text": "Highest Package Offered"
+						}
+					],
+					"dataProvider": [
+						{
+							"category": "2019",
+							"column-1": "35"
+						},
+						{
+							"category": "2018",
+							"column-1": "31.77"
+						},
+						{
+							"category": "2017",
+							"column-1": "31.77"
+						},
+						{
+							"category": "2016",
+							"column-1": "22.5"
+						},
+						{
+							"category": "2015",
+							"column-1": "23.65"
+						},
+						{
+							"category": "2014",
+							"column-1": "24"
+						},
+						{
+							"category": "2013",
+							"column-1": "16"
+						},
+						{
+							"category": "2012",
+							"column-1": "6.4"
+						},
+						{
+							"category": "2011",
+							"column-1": "6.75"
+						},
+						{
+							"category": "2010",
+							"column-1": "6.1"
+						},
+						{
+							"category": "2009",
+							"column-1": "3.25"
+						}
+					]
+				}
+			);
+        </script>
+    <!-- amCharts javascript code -->
+		<script type="text/javascript">
+			AmCharts.makeChart("chartdivi",
+				{
+					"type": "pie",
+					"angle": 43.2,
+					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+					"depth3D": 15,
+					"innerRadius": "40%",
+					"titleField": "category",
+					"valueField": "column-1",
+					"theme": "default",
+					"allLabels": [],
+					"balloon": {},
+					"titles": [],
+					"dataProvider": [
+						{
+							"category": "2019",
+							"column-1": "18"
+						},
+						{
+							"category": "2018",
+							"column-1": "17"
+						},
+						{
+							"category": "2017",
+							"column-1": "15"
+						},
+						{
+							"category": "2016",
+							"column-1": "4"
+						},
+						{
+							"category": "2015",
+							"column-1": "3"
+						},
+						{
+							"category": "2014",
+							"column-1": "2"
+						},
+						{
+							"category": "2013",
+							"column-1": "2"
+						},
+						{
+							"category": "2012",
+							"column-1": "1"
+						},
+						{
+							"category": "2011",
+							"column-1": "0"
+						},
+						{
+							"category": "2010",
+							"column-1": "0"
+						},
+						{
+							"category": "2009",
+							"column-1": "0"
+						}
+					]
+				}
+			);
+		</script>
+</body>
+</html>

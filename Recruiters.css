@@ -1,0 +1,80 @@
+body{
+    background-image:  linear-gradient(rgba(255, 244, 93, 0.856) 0%, rgba(253, 48, 75, 0.774)100%),url(photos/back.jpg);
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.col-xs-12{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+}
+.Total-recruiters{
+    background-color:rgba(255, 255, 255, 0.548);
+    margin-left:8.5%;
+    margin-right:8.5%;
+    margin-top:100px;
+    border-radius:6px;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.726);
+    padding-bottom:50px;
+}
+.Total-recruiters hr{
+    margin-top: 50px;
+    border-width: 5px;
+    border-color:rgba(124, 121, 121, 0.76);
+}
+.Total-recruiters h1{
+    font-family: 'Bebas Neue',Arial,sans-serif;
+    letter-spacing: 2px;
+    margin:15px 0;
+    color:black;
+    margin-left:1%;
+}
+.Total-recruiters .company-images{
+    margin-left:1%;
+}
+.Total-recruiters .company-images img{
+    width: 100%;
+    height:100%;
+    padding:0;
+    margin:0;
+    border: 1px solid rgba(173, 168, 168, 0.548);
+}
+
+.Total-recruiters h1{
+    font-size:40px;
+}
+
+
+/* -------------------Small devices--------------------- */
+@media (min-width: 768px) and (max-width: 991px){
+    .Total-recruiters h1{
+        font-size:40px;
+    }
+}
+
+/* ---------------------Extra small Devices--------------------- */
+@media (min-width:0px) and (max-width: 767px) {
+    .Total-recruiters h1{
+        font-size:35px;
+    }
+}
+.Total-recruiters .company-images{
+    padding:0;
+    margin:0;
+}
+.Total-recruiters .company-images .row .col-xs-1{
+    padding:0;
+    margin-bottom: 1.3%;
+}
+.Total-recruiters .company-images .row{
+    padding:0;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Total-recruiters .company-images .row .col-xs-2{
+    padding:0;
+    margin-bottom: 1.5%;
+}

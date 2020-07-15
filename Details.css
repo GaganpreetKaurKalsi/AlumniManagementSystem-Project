@@ -1,0 +1,154 @@
+body{
+background: rgb(48,226,255);
+background: linear-gradient(180deg, rgba(48,226,255,1) 0%, rgba(82,252,233,1) 50%, rgba(55,219,246,1) 100%);
+background: linear-gradient(180deg, rgb(18, 19, 19) 0%, rgb(78, 82, 81) 50%, rgb(3, 3, 3) 100%);
+}
+*{
+    transition: all 1s ease-in-out;
+}
+body{
+    /* background-color:#61122f; */
+    color:#fff;
+    font-size: 16px;
+    font-family: 'Oxygen', sans-serif;
+}
+.main-container{
+    background-color:white;
+    margin-left:4%;
+    margin-right:4%;
+    border:1px solid lightgray;
+    margin-bottom: 50px;
+    /* border:2px solid black; */
+    outline:2px solid rgb(255, 255, 255);
+    outline-offset: 5px;
+    margin-top:50px;
+}
+.main-container .container-fluid .row label{
+    padding:0;
+    text-align: right;
+    margin-right:20px;
+    height: 26px;
+    margin-top: 10px;
+    font-size:15px;
+}
+.main-container .container-fluid .row input,select{
+    height:40px;
+}
+.main-container .container-fluid .row p{
+    font-size:25px;
+    color:darkgrey;
+    font-weight:100;
+}
+.main-container .container-fluid form.row .row .margin{
+    height:70px;
+}
+#gender{
+    margin-left:10px;
+}
+#button{
+    padding:10px;
+    background-color:rgb(40, 131, 40);
+    color:white;
+    width:100px;
+    float:right;
+    font-size:16px;
+    margin-bottom:20px;
+    border-radius:5px;
+    font-weight:600;
+    letter-spacing: 1px;
+    margin-top:10px;
+}
+
+ /* ----------  For large devices ----------- */
+ @media (min-width: 992px){
+    .main-container{
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+}
+
+/* --------------------Medium Devices---------------------- */
+@media (min-width: 768px) and (max-width: 991px){
+}
+
+/* -------------------Small devices--------------------- */
+@media (min-width: 576px) and (max-width: 767px){
+    .main-container .container-fluid .row label{
+        text-align: left;
+        margin-bottom:10px;
+    }
+    .main-container .container-fluid form.row .row{
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+    .main-container{
+        padding:0 !important;
+    }
+    .main-container .container-fluid form.row{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .main-container .container-fluid form.row .row .margin{
+        margin-bottom:25px;
+    }
+}
+
+
+/* ---------------------Extra small Devices--------------------- */
+@media (min-width:0px) and (max-width: 575px){
+    .main-container .container-fluid .row label{
+        text-align: left;
+        margin-bottom:10px;
+    }
+    .main-container .container-fluid form.row .row{
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+    .main-container{
+        padding:0 !important;
+    }
+    .main-container .container-fluid form.row{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .main-container .container-fluid form.row .row .margin{
+        margin-bottom:25px;
+    }
+    #interest{
+        margin-top:10px;
+    }
+}
+
+/* <div class="container-fluid">
+        <h1>Profile</h1>
+        <hr>
+        <form class="row col-xs-6">
+            <label for="status" class="col-xs-10">Status</label>
+            <input type="text" class="col-xs-10">
+            <label for="fullname" class="col-xs-10">Full Name</label>
+            <input type="text" class="col-xs-5">
+            <input type="text" class="col-xs-5">
+            <label for="fname" class="col-xs-5">First Name</label>
+            <label for="lname" class="col-xs-5">Last Name</label>
+
+            <label for="address" class="col-xs-10">Address</label>
+            <input type="text" class="col-xs-10">
+            <label for="add1" class="col-xs-10">Street Address</label>
+            <input type="text" class="col-xs-5"> 
+            <input type="text" class="col-xs-5">
+            <label for="city" class="col-xs-5">City</label>
+            <label for="state" class="col-xs-5">State/Province</label>
+            <input type="text" class="col-xs-5">
+            <select placeholder="Please Select" class="col-xs-5">
+                <option>America</option>
+                <option>Australia</option>
+                <option>Europe</option>
+                <option>India</option>
+                <option>Japan</option>
+            </select>
+            <label for="state" class="col-xs-5">Postal/ZipCode</label>
+            <label for="country" class="col-xs-5">Country</label>
+        </form>
+    </div> */

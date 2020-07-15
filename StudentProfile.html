@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <!-- Custom css file -->
+    <!-- <link href="ResponsiveStyle.css" rel="stylesheet"> -->
+    <link href="Details.css" rel="stylesheet">
+
+    <!----------------- Bootstrap css files --------------->
+    <link rel="stylesheet" href="css-files/bootstrap.min.css">
+
+    <!-------------------------- Google Fonts ------------------------>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:wght@500&family=Lora&family=Oswald:wght@300;400;500&family=Oxygen:wght@300;400;700&family=Playfair+Display&family=Quicksand:wght@600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Chelsea+Market&family=Lobster&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5ebae6c58ee2956d73a07bf4/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+</head>
+<body>
+
+    <div class="main-container col-lg-10 col-md-10 col-sm-11 col-xs-11">
+        <div class="container-fluid col-xs-12">
+            <h1 style="font-family:'Lora'">Student Profile</h1>
+            <hr>
+            <form class="row col-xs-12" method="POST" action="https://8h9ago61k7.execute-api.us-east-1.amazonaws.com/StudentProfile-api">
+                <div class="row col-xs-12">
+                    <div class="margin">
+                        <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Name</label>
+                        <input type="text" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" name="name">
+                    </div>
+                        <div class="margin">
+                            <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Email ID</label>
+                            <input type="email" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" name="email">
+                        </div>
+                        <div class="margin">
+                            <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Phone Number</label>
+                            <input type="text" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" name="phone">
+                        </div>
+                        <div class="margin">
+                            <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">UID</label>
+                            <input type="text" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" name="uid">
+                        </div>
+                        <div class="margin">
+                            <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Day Scholar/Hostler</label>
+                            <input type="text" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        </div>
+                        <div class="margin">
+                            <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Branch</label>
+                            <input type="text" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" name="branch">
+                        </div>
+                </div>
+                <div class="row col-xs-12">
+                    <div class="margin">
+                        <label for="emp-status" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Employment Status</label>
+                        <select class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                            <option>Select your current status</option>
+                            <option>Employed full time</option>
+                            <option>Employed part time</option>
+                            <option>Self-employed full time</option>
+                            <option>Self-employed part time</option>
+                            <option>Intern at a company</option>
+                            <option>Not Employed</option>
+                        </select>
+                    </div>
+                    <div class="margin">
+                        <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Highest Degree</label>
+                        <!-- <input type="text" class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> -->
+                        <select class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                            <option>Select your highest level of education</option>
+                            <option>Less than high school diploma(or equivalent)</option>
+                            <option>High school diploma(or equivalent)</option>
+                            <option>Some college but no degree</option>
+                            <option>Associate Degree (e.g.,AA,AS)</option>
+                            <option>Bachelor's degree (e.g.,BA,AB,BS)</option>
+                            <option>Master's degree (e.g.,MA,MS,MEng,MEd,MSW,MBA)</option>
+                            <option>Professional school degree (e.g.,MD,DDS,DVMM,LLB,JD) </option>
+                            <option>Doctorate degree(e.g.,PhD, EdD)</option>
+                        </select>
+                    </div>
+                    <div class="margin">
+                        <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Field or Major</label>
+                        <select class="col-lg-5 col-md-5 col-sm-5 col-xs-12" name="field">
+                            <option>Ex: Business</option>
+                            <option>Business</option>
+                            <option>Computer Science</option>
+                            <option>Engineering</option>
+                            <option>Mathematics and Statistics</option>
+                            <option>Physical Sciences</option>
+                            <option>Biological Sciences</option>
+                            <option>Health Professions</option>
+                            <option>Legal Professions</option>
+                            <option>Education</option>
+                            <option>Social Sciences</option>
+                            <option>Arts and Humanities</option>
+                            <option>Other</option>
+                            <option>NA</option>
+                        </select>
+                    </div>
+                    <div class="margin">
+                        <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Top Skills</label>
+                        <select class="col-lg-5 col-md-5 col-sm-5 col-xs-12" name="skill">
+                            <option>Ex: Machine Learning</option>
+                            <option>Accounting</option>
+                            <option>Data Structures and Algorithms</option>
+                            <option>Android Software Development</option>
+                            <option>Big Data</option>
+                            <option>Business Analytics</option>
+                            <option>Cloud Computing</option>
+                            <option>Communication</option>
+                            <option>Cyber Security</option>
+                            <option>Data Analysis</option>
+                            <option>Data Mining</option>
+                            <option>Data Visulization</option>
+                            <option>Database</option>
+                            <option>Deep Learning</option>
+                            <option>Entrepreneurship</option>
+                            <option>Finance</option>
+                            <option>Human Resources</option>
+                            <option>Java Programming</option>
+                            <option>Leadership</option>
+                            <option>Machine Learning</option>
+                            <option>Marketing</option>
+                            <option>Probablity and Statistics</option>
+                            <option>Project Management</option>
+                            <option>Python Programming</option>
+                            <option>R Programming</option>
+                            <option>Recommender Systems</option>
+                            <option>Sales</option>
+                            <option>Scala Programming</option>
+                            <option>SQL</option>
+                            <option>Strategic Management</option>
+                            <option>Supply Chain Management</option>
+                            <option>User Experience</option>
+                            <option>Web Development</option>
+                        </select>
+                    </div>
+                    <div class="margin">
+                        <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Location</label>
+                        <input type="text" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" name="locat" placeholder="Tell the city, state or country you live in">
+                    </div>
+                    <div class="margin">
+                        <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-2">Gender</label>
+                        <span id="gender"><input type="radio" name="male" ><span>Female</span></span>
+                        <span id="gender"><input type="radio" name="male" ><span>Male</span></span>
+                        <span id="gender"><input type="radio" name="male" ><span>Other</span></span>
+                        <span id="gender"><input type="radio" name="male" ><span>I'd rather not say</span></span>
+                    </div>
+                    <div class="margin">
+                        <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">D/O/B</label>
+                        <input type="date" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    </div>
+                    <div class="margin">
+                        <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Would you like to do an internship ?</label>
+                        <input type="text" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" placeholder="Yes/No" name="intern">
+                    </div>
+                    <div class="margin">
+                        <label for="fullname" class="col-lg-3 col-md-3 col-sm-3 col-xs-12" >In which field would you like to do intership ?</label>
+                        <input type="text" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" name="interest" placeholder="Ex. Web Development" id="interest">
+                    </div>
+                    <button type="submit" id="button">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="javascript-files/jquery.min.js"></script>
+    <script src="javascript-files/bootstrap.js"></script>
+</body>
+</html>
