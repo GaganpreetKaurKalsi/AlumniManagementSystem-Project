@@ -27,7 +27,7 @@ The website is a fully responsive site (Can be opened in Laptop/PC, Tablet, Andr
 
 ## Links to website - <br>
 (Sorry, the AWS services has been expired) <br>
-LogIn Form/SignUp Form - [a link](https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/LoginForm) <br>
+LogIn Form/SignUp Form - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/LoginForm <br>
 StudentProfile - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/StudentProfile <br>
 AlumniProfile - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/Details <br>
 Main WebPage - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/ResponsiveLayout <br>
