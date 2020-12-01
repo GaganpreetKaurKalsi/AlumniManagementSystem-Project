@@ -24,3 +24,9 @@ The website is a fully responsive site (Can be opened in Laptop/PC, Tablet, Andr
 - Dynamo DB
 - API Gateway
 - AWS Lambda
+
+##Links to website - (Sorry, the AWS services has been expired)
+LogIn Form/SignUp Form - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/LoginForm
+StudentProfile - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/StudentProfile
+AlumniProfile - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/Details
+Main WebPage - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/ResponsiveLayout
