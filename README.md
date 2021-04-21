@@ -31,4 +31,4 @@ LogIn Form/SignUp Form - https://gaganpreetkaurkalsi.github.io/AlumniManagementS
 StudentProfile - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/StudentProfile <br>
 AlumniProfile - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/Details <br>
 Main WebPage - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/ResponsiveLayout <br>
-Dashboard - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem/Dashboard.html <br>
+Dashboard - https://gaganpreetkaurkalsi.github.io/AlumniManagementSystem-Project/Dashboard.html<br>
